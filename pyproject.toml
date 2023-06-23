@@ -47,7 +47,10 @@ maintainers = [
 dynamic = ["version"]
 
 [project.optional-dependencies]
-wtf = ["WTForms[email]>=3.0.0", "Flask-WTF>=0.14.3"]
+wtf = ["WTForms[email]>=3.0.0",
+    "flask-wtf@git+https://github.com/jkittner/flask-wtf#egg=flask-2-3-compatibility",
+
+]
 toolbar = ["Flask-DebugToolbar>=0.11.0"]
 dev = [
   "black==22.6.0",
@@ -58,6 +61,7 @@ dev = [
   "nox",
   "Pillow>=7.0.0",
   "blinker",
+  "mongomock@git+https://github.com/ml-evs/mongomock#egg=develop",
 ]
 legacy = ["MarkupSafe==2.0.1"]
 legacy-dev = [
@@ -120,7 +124,7 @@ force_grid_wrap = 0
 use_parentheses = true
 
 [tool.pytest.ini_options]
-addopts = "--cov=flask_mongoengine --cov-config=setup.cfg"
+#addopts = "--cov=flask_mongoengine --cov-config=setup.cfg"
 testpaths = ["tests"]
 filterwarnings = [
   "error",
