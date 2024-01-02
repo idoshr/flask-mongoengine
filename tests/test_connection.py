@@ -10,12 +10,28 @@ from pymongo.read_preferences import ReadPreference
 from flask_mongoengine import MongoEngine, current_mongoengine_instance
 
 
-def is_mongo_mock_installed() -> bool:
+def is_mongo_mock_not_installed() -> bool:
     try:
         import mongomock.__version__  # noqa
     except ImportError:
-        return False
-    return True
+        return True
+    except DeprecationWarning:
+        return True
+    return False
+
+
+def get_mongomock_client():
+    if not is_mongo_mock_not_installed():
+        import mongomock
+
+        return mongomock.MongoClient
+    else:
+        return None
+
+
+def is_mongoengine_version_greater_than(major, minor, patch):
+    v = tuple(mongoengine.__version__.split("."))
+    return int(v[0]) >= major and int(v[1]) >= minor and int(v[2]) >= patch
 
 
 def test_connection__should_use_defaults__if_no_settings_provided(app):
@@ -136,8 +152,70 @@ def test_connection__should_parse_host_uri__if_host_formatted_as_uri(
     assert connection.PORT == 27017
 
 
+def should_parse_mongo_mock_uri__as_uri_and_as_settings(app, config_extension):
+    import mongomock
+
+    app.config.update(config_extension)
+
+    db = MongoEngine()
+
+    # Verify no extension for Mongoengine yet created for app
+    assert app.extensions == {}
+    assert current_mongoengine_instance() is None
+
+    # Create db connection. Should return None.
+
+    assert db.init_app(app) is None
+
+    assert current_mongoengine_instance() == db
+    if "ALIAS" in config_extension.get("MONGODB_SETTINGS", {}):
+        connection = db.get_connection(config_extension["MONGODB_SETTINGS"]["ALIAS"])
+        mongo_engine_db = db.get_db(config_extension["MONGODB_SETTINGS"]["ALIAS"])
+    else:
+        connection = db.get_connection()
+        mongo_engine_db = db.get_db()
+    assert isinstance(mongo_engine_db, mongomock.Database)
+    assert isinstance(connection, get_mongomock_client())
+    assert mongo_engine_db.name == "flask_mongoengine_test_db"
+    assert connection.HOST == "localhost"
+    assert connection.PORT == 27017
+
+
 @pytest.mark.skipif(
-    is_mongo_mock_installed(), reason="This test require mongomock not exist"
+    is_mongo_mock_not_installed() or not is_mongoengine_version_greater_than(0, 27, 0),
+    reason="This test require mongomock not exist and mongoengine version greater than 0.27.0",
+)
+@pytest.mark.parametrize(
+    ("config_extension"),
+    [
+        {
+            "MONGODB_SETTINGS": {
+                "HOST": "mongodb://localhost:27017/flask_mongoengine_test_db",
+                "mongo_client_class": get_mongomock_client(),
+            }
+        },
+        {
+            "MONGODB_SETTINGS": {
+                "ALIAS": "simple_conn",
+                "HOST": "localhost",
+                "PORT": 27017,
+                "DB": "flask_mongoengine_test_db",
+                "mongo_client_class": get_mongomock_client(),
+            }
+        },
+        # {"MONGODB_HOST": "mongodb://localhost:27017/flask_mongoengine_test_db"},
+    ],
+    ids=("Dict format as URI", "Dict format as Param"),
+)
+def test_connection__should_parse_mongo_mock_uri__as_uri_and_as_settings_new(
+    app, config_extension
+):
+    should_parse_mongo_mock_uri__as_uri_and_as_settings(app, config_extension)
+
+
+@pytest.mark.skipif(
+    is_mongo_mock_not_installed() or is_mongoengine_version_greater_than(0, 27, 0),
+    reason="This test require mongomock not exist and mongoengine version less than 0.27.0",
 )
 @pytest.mark.parametrize(
     ("config_extension"),
@@ -160,23 +238,11 @@ def test_connection__should_parse_host_uri__if_host_formatted_as_uri(
     ],
     ids=("Dict format as URI", "Dict format as Param", "Config variable format as URI"),
 )
-def test_connection__should_parse_mongo_mock_uri__as_uri_and_as_settings(
+def test_connection__should_parse_mongo_mock_uri__as_uri_and_as_settings_old(
     app, config_extension
 ):
     """Make sure a simple connection pass ALIAS setting variable."""
-    db = MongoEngine()
-    app.config.update(config_extension)
-
-    # Verify no extension for Mongoengine yet created for app
-    assert app.extensions == {}
-    assert current_mongoengine_instance() is None
-
-    # Create db connection. Should return None.
-
-    with pytest.raises(RuntimeError) as error:
-        assert db.init_app(app) is None
-
-    assert str(error.value) == "You need mongomock installed to mock MongoEngine."
+    should_parse_mongo_mock_uri__as_uri_and_as_settings(app, config_extension)
 
 
 @pytest.mark.parametrize(
@@ -289,6 +355,8 @@ def test_multiple_connections(app):
     with switch_db(Todo, "default") as Todo:
         doc = Todo.objects().first()
         assert doc is not None
+
+    assert list(db.connection.values())[0] == list(db.connection.values())[1]
 
 
 def test_incorrect_value_with_mongodb_prefix__should_trigger_mongoengine_raise(app):
