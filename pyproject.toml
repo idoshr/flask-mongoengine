@@ -2,7 +2,7 @@
 name = "flask-mongoengine"
 description = "Flask extension that provides integration with MongoEngine and WTF model forms."
 readme = "README.md"
-requires-python = ">=3.7"
+requires-python = ">=3.8"
 license = {text = "BSD 3-Clause License"}
 classifiers = [
   "Development Status :: 4 - Beta",
@@ -13,10 +13,10 @@ classifiers = [
   "Programming Language :: Python",
   "Programming Language :: Python :: 3 :: Only",
   "Programming Language :: Python :: 3",
-  "Programming Language :: Python :: 3.7",
   "Programming Language :: Python :: 3.8",
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: Implementation :: PyPy",
   "Programming Language :: Python :: Implementation :: CPython",
   "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
@@ -47,7 +47,9 @@ maintainers = [
 dynamic = ["version"]
 
 [project.optional-dependencies]
-wtf = ["WTForms[email]>=3.0.0", "Flask-WTF>=0.14.3"]
+wtf = ["WTForms[email]>=3.0.0",
+    "Flask-WTF>=0.14.3",
+]
 toolbar = ["Flask-DebugToolbar>=0.11.0"]
 dev = [
   "black==22.6.0",
@@ -58,6 +60,7 @@ dev = [
   "nox",
   "Pillow>=7.0.0",
   "blinker",
+  "mongomock@git+https://github.com/idoshr/mongomock.git",  # TEMP
 ]
 legacy = ["MarkupSafe==2.0.1"]
 legacy-dev = [
@@ -66,6 +69,7 @@ legacy-dev = [
   "pytest-mock",
   "Pillow>=7.0.0",
   "blinker",
+  "mongomock",
 ]
 
 [project.urls]
@@ -120,11 +124,12 @@ force_grid_wrap = 0
 use_parentheses = true
 
 [tool.pytest.ini_options]
-addopts = "--cov=flask_mongoengine --cov-config=setup.cfg"
+#addopts = "--cov=flask_mongoengine --cov-config=setup.cfg"
 testpaths = ["tests"]
 filterwarnings = [
   "error",
   "ignore::ResourceWarning",
   "ignore::DeprecationWarning:flask_mongoengine",
   "ignore::DeprecationWarning:tests",
+  "ignore:.*deprecated and ignored since IPython.*:DeprecationWarning"
   ]

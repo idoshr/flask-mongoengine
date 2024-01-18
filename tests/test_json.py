@@ -41,7 +41,7 @@ def extended_db(app):
     test_db.connection["default"].drop_database(db_name)
 
 
-class DummyEncoder(flask.json.JSONEncoder):
+class DummyEncoder(flask.json._json.JSONEncoder):
     """
     An example encoder which a user may create and override
     the apps json_encoder with.
@@ -49,11 +49,13 @@ class DummyEncoder(flask.json.JSONEncoder):
     """
 
 
-DummyProvider = None
 if use_json_provider():
 
     class DummyProvider(flask.json.provider.DefaultJSONProvider):
         """Dummy Provider, to test correct MRO in new flask versions."""
+
+else:
+    DummyProvider = None
 
 
 @pytest.mark.skipif(condition=use_json_provider(), reason="New flask use other test")

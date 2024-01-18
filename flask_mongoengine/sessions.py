@@ -1,9 +1,12 @@
+import logging
 import uuid
 from datetime import datetime, timedelta
 
 from bson.tz_util import utc
 from flask.sessions import SessionInterface, SessionMixin
 from werkzeug.datastructures import CallbackDict
+
+logger = logging.getLogger("flask_mongoengine")
 
 __all__ = ("MongoEngineSession", "MongoEngineSessionInterface")
 
@@ -28,6 +31,13 @@ class MongoEngineSessionInterface(SessionInterface):
         :param db: The app's db eg: MongoEngine()
         :param collection: The session collection name defaults to "session"
         """
+
+        logger.warning(
+            "Session management by flask-mongoengine soon to be deprecat."
+            "We recommended to migrate to flask-session."
+            "for migration guid follow this instruction: "
+            "http://docs.mongoengine.org/projects/flask-mongoengine/en/latest/session_interface.html"
+        )
 
         if not isinstance(collection, str):
             raise ValueError("Collection argument should be string")
@@ -56,7 +66,7 @@ class MongoEngineSessionInterface(SessionInterface):
         return timedelta(**app.config.get("SESSION_TTL", {"days": 1}))
 
     def open_session(self, app, request):
-        sid = request.cookies.get(app.session_cookie_name)
+        sid = request.cookies.get(app.config["SESSION_COOKIE_NAME"])
         if sid:
             stored_session = self.cls.objects(sid=sid).first()
 
@@ -81,7 +91,7 @@ class MongoEngineSessionInterface(SessionInterface):
         # If the session is empty, return without setting the cookie.
         if not session:
             if session.modified:
-                response.delete_cookie(app.session_cookie_name, domain=domain)
+                response.delete_cookie(app.config["SESSION_COOKIE_NAME"], domain=domain)
             return
 
         expiration = datetime.utcnow().replace(tzinfo=utc) + self.get_expiration_time(
@@ -92,7 +102,7 @@ class MongoEngineSessionInterface(SessionInterface):
             self.cls(sid=session.sid, data=session, expiration=expiration).save()
 
         response.set_cookie(
-            app.session_cookie_name,
+            app.config["SESSION_COOKIE_NAME"],
             session.sid,
             expires=expiration,
             httponly=httponly,
