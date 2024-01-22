@@ -1,5 +1,5 @@
 [project]
-name = "flask-mongoengine"
+name = "flask-mongoengin-2"
 description = "Flask extension that provides integration with MongoEngine and WTF model forms."
 readme = "README.md"
 requires-python = ">=3.8"
@@ -42,6 +42,7 @@ authors = [
   {name = "Ross Lawley", email = "ross.lawley@gmail.com"}
 ]
 maintainers = [
+  {name = "Ido Shraga", email = "idoshraga@gmail.com"},
   {name = "Andrey Shpak", email = "ashpak@ashpak.ru"}
 ]
 dynamic = ["version"]
@@ -73,10 +74,10 @@ legacy-dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/MongoEngine/flask-mongoengine"
+Homepage = "https://github.com/idoshr/flask-mongoengine"
 Documentation = "http://docs.mongoengine.org/projects/flask-mongoengine/en/latest/"
-Repository = "https://github.com/MongoEngine/flask-mongoengine"
-Changelog = "https://github.com/MongoEngine/flask-mongoengine/releases"
+Repository = "https://github.com/idoshr/flask-mongoengine"
+Changelog = "https://github.com/idoshr/flask-mongoengine/releases"
 
 [build-system]
 requires = [
@@ -99,7 +100,7 @@ write_to = "flask_mongoengine/_version.py"
 
 [tool.black]
 line-length = 88
-target-version = ['py37']
+target-version = ['py38']
 exclude = '''
 /(
     \.eggs

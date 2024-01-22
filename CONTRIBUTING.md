@@ -200,7 +200,7 @@ Any pull requests without tests will take longer to be integrated and might be r
 
 [pre-commit]: https://pre-commit.com/
 
-[GitHub actions]: https://github.com/MongoEngine/flask-mongoengine/actions
+[GitHub actions]: https://github.com/idoshr/flask-mongoengine/actions
 
 [Flask]: https://github.com/pallets/flask
 

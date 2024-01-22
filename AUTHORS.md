@@ -2,6 +2,7 @@
 
 ## Current maintainers:
 
+- Ido Shraga
 - Andrey Shpak
 
 This project is made by incredible authors:

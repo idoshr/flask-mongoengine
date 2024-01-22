@@ -1,11 +1,11 @@
 # Flask-MongoEngine
 
-[![PyPI version](https://badge.fury.io/py/flask-mongoengine.svg)](https://badge.fury.io/py/flask-mongoengine)
-[![CI Tests](https://github.com/MongoEngine/flask-mongoengine/actions/workflows/tests.yml/badge.svg)](https://github.com/MongoEngine/flask-mongoengine/actions/workflows/tests.yml)
+[![PyPI version](https://badge.fury.io/py/flask-mongoengine-2.svg)](https://badge.fury.io/py/flask-mongoengine-2)
+[![CI Tests](https://github.com/idoshr/flask-mongoengine/actions/workflows/tests.yml/badge.svg)](https://github.com/flask/flask-mongoengine/actions/workflows/tests.yml)
 [![Documentation Status](https://readthedocs.org/projects/flask-mongoengine/badge/?version=latest)](http://docs.mongoengine.org/projects/flask-mongoengine/en/latest/?badge=latest)
-[![Maintainability](https://api.codeclimate.com/v1/badges/6fb8ae00b1008f5f1b20/maintainability)](https://codeclimate.com/github/MongoEngine/flask-mongoengine/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/6fb8ae00b1008f5f1b20/maintainability)](https://codeclimate.com/github/idoshr/flask-mongoengine/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/6fb8ae00b1008f5f1b20/test_coverage)](https://codeclimate.com/github/MongoEngine/flask-mongoengine/test_coverage)
-![PyPI - Downloads](https://img.shields.io/pypi/dm/flask-mongoengine)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/flask-mongoengine-2)
 
 Flask-MongoEngine is a Flask extension that provides integration with [MongoEngine],
 [WtfForms] and [FlaskDebugToolbar].
