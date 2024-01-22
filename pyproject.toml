@@ -1,5 +1,5 @@
 [project]
-name = "flask-mongoengin-2"
+name = "flask-mongoengine-2"
 description = "Flask extension that provides integration with MongoEngine and WTF model forms."
 readme = "README.md"
 requires-python = ">=3.8"
