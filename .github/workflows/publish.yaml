@@ -1,0 +1,29 @@
+name: Publish
+on:
+  push:
+    tags:
+      - '*'
+jobs:
+  pypi-publish:
+    name: Flask-Mongoengine-2
+    runs-on: ubuntu-latest
+    if: github.event_name == 'create' && startsWith(github.ref, 'refs/tags/v')
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.0
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.0
+        check-latest: true
+    # todo separate build from publish
+    # https://stackoverflow.com/questions/59349905/which-properties-does-github-event-in-a-github-workflow-have
+    - name: build dummy wheel for test-pypi
+      run: |
+        pip install wheel
+        python setup.py sdist bdist_wheel
+    - name: publish pypi
+      uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        password: ${{ secrets.PYPI_TOKEN }}
+
+
