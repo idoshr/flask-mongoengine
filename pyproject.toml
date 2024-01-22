@@ -60,7 +60,7 @@ dev = [
   "nox",
   "Pillow>=7.0.0",
   "blinker",
-  "mongomock@git+https://github.com/idoshr/mongomock.git",  # TEMP
+  "mongomock-5==5.0.1",  # TEMP
 ]
 legacy = ["MarkupSafe==2.0.1"]
 legacy-dev = [
