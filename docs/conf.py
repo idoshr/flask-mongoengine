@@ -49,7 +49,7 @@ source_suffix = {
 master_doc = "index"
 
 # General information about the project.
-project = "Flask-MongoEngine-2"
+project = "Flask-MongoEngine-3"
 copyright = "2010-2024, Streetlife and others"
 
 # The version info for the project you're documenting, acts as replacement for

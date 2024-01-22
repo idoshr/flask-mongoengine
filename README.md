@@ -1,11 +1,11 @@
 # Flask-MongoEngine
 
-[![PyPI version](https://badge.fury.io/py/flask-mongoengine-2.svg)](https://badge.fury.io/py/flask-mongoengine-2)
+[![PyPI version](https://badge.fury.io/py/flask-mongoengine-3.svg)](https://badge.fury.io/py/flask-mongoengine-3)
 [![CI Tests](https://github.com/idoshr/flask-mongoengine/actions/workflows/tests.yml/badge.svg)](https://github.com/flask/flask-mongoengine/actions/workflows/tests.yml)
 [![Documentation Status](https://readthedocs.org/projects/flask-mongoengine/badge/?version=latest)](http://docs.mongoengine.org/projects/flask-mongoengine/en/latest/?badge=latest)
 [![Maintainability](https://api.codeclimate.com/v1/badges/6fb8ae00b1008f5f1b20/maintainability)](https://codeclimate.com/github/idoshr/flask-mongoengine/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/6fb8ae00b1008f5f1b20/test_coverage)](https://codeclimate.com/github/MongoEngine/flask-mongoengine/test_coverage)
-![PyPI - Downloads](https://img.shields.io/pypi/dm/flask-mongoengine-2)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/6fb8ae00b1008f5f1b20/test_coverage)](https://codeclimate.com/github/idoshr/flask-mongoengine/test_coverage)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/flask-mongoengine-3)
 
 Flask-MongoEngine is a Flask extension that provides integration with [MongoEngine],
 [WtfForms] and [FlaskDebugToolbar].
@@ -24,7 +24,7 @@ used together.
 
 ```bash
 # For Flask >= 2.0.0
-pip install flask-mongoengine
+pip install flask-mongoengine-3
 ```
 
 We still maintain special case for [Flask] = 1.1.4 support (the latest version in 1.x.x
@@ -33,7 +33,7 @@ extra option.
 
 ```bash
 # With Flask 1.1.4 dependencies
-pip install flask-mongoengine[legacy]
+pip install flask-mongoengine-3[legacy]
 ```
 
 ### Installation with WTFForms and Flask-WTF support
@@ -43,7 +43,7 @@ will extend project dependencies with [Flask-WTF], [WTFForms] and related packag
 
 ```bash
 # With Flask-WTF and WTFForms dependencies
-pip install flask-mongoengine[wtf]
+pip install flask-mongoengine-3[wtf]
 ```
 
 ### Installation with Flask Debug Toolbar support
@@ -54,14 +54,14 @@ you need to install flask-mongoengine with related support, use:
 
 ```bash
 # With FlaskDebugToolbar dependencies
-pip install flask-mongoengine[toolbar]
+pip install flask-mongoengine-3[toolbar]
 ```
 
 ### Installation with all features together
 
 ```bash
 # With Flask-WTF, WTFForms and FlaskDebugToolbar dependencies
-pip install flask-mongoengine[wtf,toolbar]
+pip install flask-mongoengine-3[wtf,toolbar]
 ```
 
 ## Flask configuration
