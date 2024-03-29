@@ -36,7 +36,7 @@ class MongoEngineSessionInterface(SessionInterface):
             "Session management by flask-mongoengine soon to be deprecat."
             "We recommended to migrate to flask-session."
             "for migration guid follow this instruction: "
-            "http://docs.mongoengine.org/projects/flask-mongoengine/en/latest/session_interface.html"
+            "https://flask-mongoengine-3.readthedocs.io/en/latest/session_interface.html"
         )
 
         if not isinstance(collection, str):

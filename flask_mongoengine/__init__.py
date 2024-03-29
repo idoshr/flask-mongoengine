@@ -26,7 +26,7 @@ class MongoEngine:
             warnings.warn(
                 (
                     "Passing flat configuration is deprecated. Please check "
-                    "http://docs.mongoengine.org/projects/flask-mongoengine/flask_config.html "
+                    "https://flask-mongoengine-3.readthedocs.io/en/latest/flask_config.html "
                     "for more info."
                 ),
                 DeprecationWarning,
@@ -92,7 +92,7 @@ class MongoEngine:
             warnings.warn(
                 (
                     "Passing flat configuration is deprecated. Please check "
-                    "http://docs.mongoengine.org/projects/flask-mongoengine/flask_config.html "
+                    "https://flask-mongoengine-3.readthedocs.io/en/latest/flask_config.html "
                     "for more info."
                 ),
                 DeprecationWarning,

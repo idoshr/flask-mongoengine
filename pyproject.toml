@@ -75,7 +75,7 @@ legacy-dev = [
 
 [project.urls]
 Homepage = "https://github.com/idoshr/flask-mongoengine"
-Documentation = "http://docs.mongoengine.org/projects/flask-mongoengine/en/latest/"
+Documentation = "https://flask-mongoengine-3.readthedocs.io/en/latest/"
 Repository = "https://github.com/idoshr/flask-mongoengine"
 Changelog = "https://github.com/idoshr/flask-mongoengine/releases"
 

@@ -55,7 +55,7 @@ def test_coerce_boolean__raise_on_unexpected_value():
 def test__full_document_form__does_not_create_any_unexpected_data_in_database(db):
     """
     Test to ensure that we are following own promise in documentation, read:
-    http://docs.mongoengine.org/projects/flask-mongoengine/en/latest/migration_to_v2.html#empty-fields-are-not-created-in-database
+    https://flask-mongoengine-3.readthedocs.io/en/latest/migration_to_v2.html#empty-fields-are-not-created-in-database
     """
 
     class NumberEnum(Enum):

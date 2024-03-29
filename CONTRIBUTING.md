@@ -212,7 +212,7 @@ Any pull requests without tests will take longer to be integrated and might be r
 
 [AUTHORS.md]: AUTHORS.md
 
-[documentation]: http://docs.mongoengine.org/projects/flask-mongoengine/
+[documentation]: https://flask-mongoengine-3.readthedocs.io/en/latest/
 
 [nox]: https://nox.thea.codes/en/stable/usage.html
 
