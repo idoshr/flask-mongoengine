@@ -2,7 +2,7 @@
 
 [![PyPI version](https://badge.fury.io/py/flask-mongoengine-3.svg)](https://badge.fury.io/py/flask-mongoengine-3)
 [![CI Tests](https://github.com/idoshr/flask-mongoengine/actions/workflows/tests.yml/badge.svg)](https://github.com/flask/flask-mongoengine/actions/workflows/tests.yml)
-[![Documentation Status](https://readthedocs.org/projects/flask-mongoengine-3/badge/?version=latest)](https://flask-mongoengine-3.readthedocs.io/en/latest/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/flask-mongoengine-3/badge/?version=latest)](https://flask-mongoengine-3.readthedocs.io/en/latest/?badge=latest)
 [![Maintainability](https://api.codeclimate.com/v1/badges/6fb8ae00b1008f5f1b20/maintainability)](https://codeclimate.com/github/idoshr/flask-mongoengine/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/6fb8ae00b1008f5f1b20/test_coverage)](https://codeclimate.com/github/idoshr/flask-mongoengine/test_coverage)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/flask-mongoengine-3)
