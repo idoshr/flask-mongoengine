@@ -1,4 +1,5 @@
 """Flask application JSON extension functions."""
+
 from functools import lru_cache
 
 from bson import DBRef, ObjectId, json_util

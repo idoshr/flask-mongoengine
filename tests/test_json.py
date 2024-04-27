@@ -1,4 +1,5 @@
 """Extension of app JSON capabilities."""
+
 import flask
 import pytest
 

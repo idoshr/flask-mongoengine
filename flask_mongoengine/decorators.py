@@ -1,4 +1,5 @@
 """Collection of project wide decorators."""
+
 import functools
 import logging
 import warnings

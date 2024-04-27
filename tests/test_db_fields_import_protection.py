@@ -1,4 +1,5 @@
 """Testing independency from WTForms."""
+
 import pytest
 
 try:

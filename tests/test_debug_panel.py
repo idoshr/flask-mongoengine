@@ -3,6 +3,7 @@ Tests for ``MongoDebugPanel`` and related mongo events listener.
 
 - Independent of global configuration by design.
 """
+
 import contextlib
 
 import flask

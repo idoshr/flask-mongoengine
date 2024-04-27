@@ -1,4 +1,5 @@
 """Tests for base MongoEngine class."""
+
 import pytest
 
 from flask_mongoengine import MongoEngine

@@ -1,4 +1,5 @@
 """Integration tests for new WTForms generation in Flask-Mongoengine 2.0."""
+
 import json
 from enum import Enum
 

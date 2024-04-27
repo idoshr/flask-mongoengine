@@ -1,4 +1,5 @@
 """Module responsible for connection setup."""
+
 import warnings
 from typing import List
 

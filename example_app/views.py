@@ -1,4 +1,5 @@
 """Demo views for example application."""
+
 from faker import Faker
 from flask import render_template, request
 from mongoengine.context_managers import switch_db

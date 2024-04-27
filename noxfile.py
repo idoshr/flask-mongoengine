@@ -2,6 +2,7 @@
 
 Nox is Tox tool replacement.
 """
+
 import shutil
 from pathlib import Path
 

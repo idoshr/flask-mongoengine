@@ -1,4 +1,5 @@
 """Strings and strings related fields demo model."""
+
 import re
 
 from example_app.models import db

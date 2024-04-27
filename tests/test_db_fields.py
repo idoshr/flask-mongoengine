@@ -1,4 +1,5 @@
 """Tests for db_fields overwrite and WTForms integration."""
+
 import re
 from enum import Enum
 from unittest.mock import Mock

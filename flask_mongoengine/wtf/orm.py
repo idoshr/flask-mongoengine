@@ -1,6 +1,7 @@
 """
 Tools for generating forms based on mongoengine Document schemas.
 """
+
 import decimal
 from collections import OrderedDict
 from typing import List, Optional, Type

@@ -1,4 +1,5 @@
 """Responsible for mongoengine fields extension, if WTFForms integration used."""
+
 __all__ = [
     "WtfFieldMixin",
     "BinaryField",

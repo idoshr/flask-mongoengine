@@ -1,4 +1,5 @@
 """Extended version of :mod:`mongoengine.document`."""
+
 import logging
 from typing import Dict, List, Optional, Type, Union
 

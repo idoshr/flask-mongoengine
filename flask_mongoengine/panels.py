@@ -1,4 +1,5 @@
 """Debug panel views and logic and related mongoDb event listeners."""
+
 __all__ = ["mongo_command_logger", "MongoDebugPanel"]
 import logging
 import sys
