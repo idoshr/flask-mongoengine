@@ -23,9 +23,9 @@ jobs:
             python: "3.10"
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     - name: Set up Python ${{ matrix.python }}
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python }}
     - name: Install dependencies
@@ -39,7 +39,7 @@ jobs:
     - name: Test build
       run: "nox -s \"latest-${{ matrix.python }}(db_version='6.0', wtf=True, toolbar=True)\" -- --cov-report=xml --cov-report=html"
     - name: Send coverage report to codecov
-      uses: codecov/codecov-action@v3
+      uses: codecov/codecov-action@v4
       with:
         file: ./coverage.xml
     - name: Send coverage report to codeclimate
