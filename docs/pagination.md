@@ -1,23 +1,23 @@
 # Pagination
 
-flask-mongoengine attaches the following methods to Mongoengine's default QuerySet:
+`flask-mongoengine` attaches the following methods to Mongoengine's default QuerySet:
 
-* **paginate**: paginates the QuerySet. Takes two required arguments, *page* and *per_page*.
-   And two optional arguments: *max_depth*, *first_page_index*.
+* **paginate**: paginates the QuerySet. Takes two required arguments, *page* and *per_page*,
+ and two optional arguments: *max_depth* and *first_page_index*.
 * **paginate_by_keyset**: paginates the QuerySet. Takes two required arguments,
-  *per_page* and *field_filter_by*.
-  from the second page you need also the last id of the previous page.
-  Arguments: *per_page*, *field_filter_by*, *last_field_value*.
+*per_page* and *field_filter_by*.
+* From the second page, you need the last ID of the previous page.
+Arguments: *per_page*, *field_filter_by*, *last_field_value*.
 * **paginate_field**: paginates a field from one document in the QuerySet.
-  Arguments: *field_name*, *doc_id*, *page*, *per_page*.
-  And two optional arguments: *total*, *first_page_index*
+Arguments: *field_name*, *doc_id*, *page*, *per_page*,
+* and two optional arguments: *total*, *first_page_index*.
 
-## Offset pagination
+## Offset Pagination
 
-Offset API pagination is the most common form of API pagination.
-It’s also sometimes called page-based pagination.
-An API endpoint accepts a parameter for a page number and per page then
-returns that page values.
+Offset API pagination, sometimes called page-based pagination,
+is the most common form of API pagination.
+An API endpoint accepts parameters for page number and items per page,
+then returns the specified page values.
 
 ### Example 1
 
@@ -40,7 +40,8 @@ from flask_mongoengine import Pagination
 page = request.args.get('page', 1, type=int)
 per_page = request.args.get('per_page', 10, type=int)
 
-Pagination(Todo.objects, page=page, per_page=10)
+Pagination(Todo.objects, page=page, per_page=per_page)
+
 ```
 
 ## Keyset pagination
