@@ -57,7 +57,7 @@ def lint(session):
     session.run("pre-commit", "run", "-a")
 
 
-@nox.session(python=["3.8", "3.9", "3.10", "3.11"])
+@nox.session(python=["3.8", "3.9", "3.10", "3.11", "3.12"])
 @nox.parametrize("flask", ["==1.1.4", "==2.0.3", "==2.3.3", ">=3.0.0"])
 @nox.parametrize("mongoengine", ["==0.21.0", "==0.22.1", "==0.23.1", ">=0.24.1"])
 @nox.parametrize("toolbar", [True, False])
@@ -86,7 +86,7 @@ def _run_in_docker(session, db_version="5.0"):
         session.run_always("docker", "rm", "-fv", "nox_docker_test", external=True)
 
 
-@nox.session(python=["3.8", "3.9", "3.10", "3.11"])
+@nox.session(python=["3.8", "3.9", "3.10", "3.11", "3.12"])
 @nox.parametrize("flask", ["==1.1.4", "==2.0.3", "==2.3.3", ">=3.0.0"])
 @nox.parametrize("mongoengine", ["==0.21.0", "==0.22.1", "==0.23.1", ">=0.24.1"])
 @nox.parametrize("toolbar", [True, False])
@@ -98,7 +98,7 @@ def full_tests(session, flask, mongoengine, toolbar, wtf, db_version):
     _run_in_docker(session, db_version)
 
 
-@nox.session(python=["3.8", "3.9", "3.10", "3.11"])
+@nox.session(python=["3.8", "3.9", "3.10", "3.11", "3.12"])
 @nox.parametrize("toolbar", [True, False])
 @nox.parametrize("wtf", [True, False])
 @nox.parametrize("db_version", ["5.0", "6.0", "7.0"])
