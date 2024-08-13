@@ -125,7 +125,7 @@ force_grid_wrap = 0
 use_parentheses = true
 
 [tool.pytest.ini_options]
-#addopts = "--cov=flask_mongoengine --cov-config=setup.cfg"
+addopts = "--cov=flask_mongoengine --cov-config=setup.cfg"
 testpaths = ["tests"]
 filterwarnings = [
   "error",
