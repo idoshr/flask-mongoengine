@@ -98,10 +98,10 @@ def full_tests(session, flask, mongoengine, toolbar, wtf, db_version):
     _run_in_docker(session, db_version)
 
 
-@nox.session(python=["3.12"])
+@nox.session(python=["3.8", "3.9", "3.10", "3.11", "3.12"])
 @nox.parametrize("toolbar", [True, False])
 @nox.parametrize("wtf", [True, False])
-@nox.parametrize("db_version", ["7.0"])
+@nox.parametrize("db_version", ["5.0", "6.0", "7.0"])
 def latest(session, toolbar, wtf, db_version):
     """Run minimum tests for checking minimum code quality."""
     flask = ">=3.0.0"
