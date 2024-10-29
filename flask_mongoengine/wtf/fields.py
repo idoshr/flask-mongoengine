@@ -261,7 +261,7 @@ class DictField(JSONField):
 
 
 # noinspection PyAttributeOutsideInit
-class NoneStringField(wtf_fields.StringField):
+class NoneStringField(wtf_fields.StringField()):
     """
     Custom StringField that counts "" as None
     """
@@ -387,7 +387,7 @@ class MongoSearchField(EmptyStringIsNoneMixin, wtf_fields.SearchField):
     pass
 
 
-class MongoStringField(EmptyStringIsNoneMixin, wtf_fields.StringField):
+class MongoStringField(EmptyStringIsNoneMixin, wtf_fields.StringField()):
     """
     Regular :class:`wtforms.fields.StringField`, that transform empty string to `None`.
     """

@@ -63,14 +63,14 @@ except ImportError:  # pragma: no cover
 
 
 @wtf_required
-def _setup_strings_common_validators(options: dict, obj: fields.StringField) -> dict:
+def _setup_strings_common_validators(options: dict, obj: fields.StringField()) -> dict:
     """
     Extend :attr:`base_options` with common validators for string types.
 
     :param options: dict, usually from :class:`WtfFieldMixin.wtf_generated_options`
     :param obj: Any :class:`mongoengine.fields.StringField` subclass instance.
     """
-    assert isinstance(obj, fields.StringField), "Improperly configured"
+    assert isinstance(obj, fields.StringField()), "Improperly configured"
     if obj.min_length or obj.max_length:
         options["validators"].insert(
             0,
@@ -811,7 +811,7 @@ class LazyReferenceField(WtfFieldMixin, fields.LazyReferenceField):
         raise NotImplementedError("Field converter to WTForm Field not implemented.")
 
 
-class LineStringField(WtfFieldMixin, fields.LineStringField):
+class LineStringField(WtfFieldMixin, fields.LineStringField()):
     """
     Extends :class:`mongoengine.fields.LineStringField` with wtf required parameters.
 
@@ -901,7 +901,7 @@ class MapField(WtfFieldMixin, fields.MapField):
         raise NotImplementedError("Field converter to WTForm Field not implemented.")
 
 
-class MultiLineStringField(WtfFieldMixin, fields.MultiLineStringField):
+class MultiLineStringField(WtfFieldMixin, fields.MultiLineStringField()):
     """
     Extends :class:`mongoengine.fields.MultiLineStringField` with wtf required parameters.
 
@@ -1105,7 +1105,7 @@ class SortedListField(WtfFieldMixin, fields.SortedListField):
         raise NotImplementedError("Field converter to WTForm Field not implemented.")
 
 
-class StringField(WtfFieldMixin, fields.StringField):
+class StringField(WtfFieldMixin, fields.StringField()):
     """
     Extends :class:`mongoengine.fields.StringField` with wtf required parameters.
 
