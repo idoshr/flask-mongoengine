@@ -53,7 +53,7 @@ wtf = ["WTForms[email]>=3.0.0",
 ]
 toolbar = ["Flask-DebugToolbar>=0.11.0"]
 dev = [
-  "black==24.10.0",
+  "black==24.8.0",
   "pre-commit",
   "pytest",
   "pytest-cov",
@@ -100,7 +100,7 @@ write_to = "flask_mongoengine/_version.py"
 
 [tool.black]
 line-length = 88
-target-version = ['py38']
+target-version = ['py310']
 exclude = '''
 /(
     \.eggs
