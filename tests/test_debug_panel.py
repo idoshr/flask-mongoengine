@@ -227,7 +227,7 @@ class TestMongoCommandLogger:
         """Failed command index 1 in provided test."""
         col = pymongo.collection.Collection(py_db, "test", create=True)
         with contextlib.suppress(OperationFailure):
-            col.create_index({'_id': -1})
+            col.create_index({"_id": -1})
         assert registered_monitoring.started_operations_count == 2
         assert registered_monitoring.succeeded_operations_count == 1
         assert registered_monitoring.failed_operations_count == 1
@@ -244,9 +244,11 @@ class TestMongoCommandLogger:
         assert registered_monitoring.queries[1].size >= 0
         assert registered_monitoring.queries[1].database == "pymongo_test_database"
         assert registered_monitoring.queries[1].collection == "test"
-        assert registered_monitoring.queries[1].command_name == 'createIndexes'
+        assert registered_monitoring.queries[1].command_name == "createIndexes"
         assert isinstance(registered_monitoring.queries[1].operation_id, int)
-        assert registered_monitoring.queries[1].server_command["createIndexes"] == "test"
+        assert (
+            registered_monitoring.queries[1].server_command["createIndexes"] == "test"
+        )
         assert (
             "_id index must be {_id: 1}"
             in registered_monitoring.queries[1].server_response["errmsg"]
