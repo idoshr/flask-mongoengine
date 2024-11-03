@@ -227,7 +227,7 @@ class TestMongoCommandLogger:
         """Failed command index 1 in provided test."""
         col = pymongo.collection.Collection(py_db, "test", create=True)
         with contextlib.suppress(OperationFailure):
-            col.create_index([["_id", -1]])
+            col.create_index([["_id", -1]], name="foo")
         assert registered_monitoring.started_operations_count == 2
         assert registered_monitoring.succeeded_operations_count == 1
         assert registered_monitoring.failed_operations_count == 1
