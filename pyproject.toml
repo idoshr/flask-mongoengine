@@ -63,7 +63,7 @@ dev = [
   "blinker",
   "mongomock-5==5.0.1",  # TEMP
 ]
-legacy = ["MarkupSafe==2.0.1"]
+legacy = ["MarkupSafe==3.0.2"]
 legacy-dev = [
   "pytest",
   "pytest-cov",
