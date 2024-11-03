@@ -17,7 +17,6 @@ classifiers = [
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
-  "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: Implementation :: PyPy",
   "Programming Language :: Python :: Implementation :: CPython",
   "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
@@ -54,7 +53,7 @@ wtf = ["WTForms[email]>=3.0.0",
 ]
 toolbar = ["Flask-DebugToolbar>=0.11.0"]
 dev = [
-  "black==24.10.0",
+  "black==24.8.0",
   "pre-commit",
   "pytest",
   "pytest-cov",
@@ -101,7 +100,7 @@ write_to = "flask_mongoengine/_version.py"
 
 [tool.black]
 line-length = 88
-target-version = ['py38']
+target-version = ['py310']
 exclude = '''
 /(
     \.eggs
