@@ -34,6 +34,7 @@ keywords = [
   "wtf-forms",
   "forms",
   "mongo",
+  "mongodb",
   "pymongo",
   "mongoengine",
   "extension"
