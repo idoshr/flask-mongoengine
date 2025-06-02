@@ -21,7 +21,9 @@ errors. Please switch to recommended method before posting any issue. Thank you.
 
 ## MongoDB Version Compatibility
 
-As of version X.X.X, Flask-MongoEngine is tested and compatible with MongoDB versions 5.x, 6.x, 7.x, and 8.x. Please ensure your MongoDB server is one of these supported versions for best results.
+As of version X.X.X,
+Flask-MongoEngine is tested and compatible with MongoDB versions 5.x, 6.x, 7.x, and 8.x.
+Please ensure your MongoDB server is one of these supported versions for best results.
 
 ## Recommended: List of dictionaries settings
 
@@ -145,7 +147,8 @@ parent package versions change.
 Database name from URI has priority over name. (MongoEngine behavior).
 ```
 
-If the URI is present and doesn't contain a database name, the db setting is entirely ignored and the db name is set to ``test``:
+If the URI is present and doesn't contain a database name,
+the db setting is entirely ignored and the db name is set to ``test``:
 
 ```python
 import flask

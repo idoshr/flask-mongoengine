@@ -53,9 +53,8 @@ class KeysetPagination(ABCPagination):
             self.total = iterable.count()
             if self.page:
                 self.items = self.iterable.filter(
-                        **{f"{field_filter_by}__{op}": last_field_value}
-                    ).order_by(order_by)
-
+                    **{f"{field_filter_by}__{op}": last_field_value}
+                ).order_by(order_by)
 
             else:
                 self.items = self.iterable.order_by(f"{field_filter_by}")
