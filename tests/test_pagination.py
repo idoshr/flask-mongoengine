@@ -37,6 +37,38 @@ def test_queryset_paginator_invalid(app, todo):
         Pagination(iterable=Todo.objects, page=-1, per_page=10, first_page_index=0)
 
 
+def test_per_page_validation(app, todo):
+    """Test that per_page validation works for all pagination classes"""
+    Todo = todo
+
+    # Test Pagination with per_page=0
+    with pytest.raises(ValueError, match="per_page must be a positive integer"):
+        Pagination(iterable=Todo.objects, page=1, per_page=0)
+
+    # Test Pagination with negative per_page
+    with pytest.raises(ValueError, match="per_page must be a positive integer"):
+        Pagination(iterable=Todo.objects, page=1, per_page=-5)
+
+    # Test KeysetPagination with per_page=0
+    with pytest.raises(ValueError, match="per_page must be a positive integer"):
+        KeysetPagination(Todo.objects, per_page=0)
+
+    # Test KeysetPagination with negative per_page
+    with pytest.raises(ValueError, match="per_page must be a positive integer"):
+        KeysetPagination(Todo.objects, per_page=-5)
+
+    # Test ListFieldPagination with per_page=0
+    comments = [f"comment: {i}" for i in range(10)]
+    test_todo = Todo(title="test", comments=comments).save()
+
+    with pytest.raises(ValueError, match="per_page must be a positive integer"):
+        ListFieldPagination(Todo.objects, test_todo.id, "comments", 1, per_page=0)
+
+    # Test ListFieldPagination with negative per_page
+    with pytest.raises(ValueError, match="per_page must be a positive integer"):
+        ListFieldPagination(Todo.objects, test_todo.id, "comments", 1, per_page=-5)
+
+
 def test_queryset_paginator(app, todo):
     Todo = todo
     paginator = Pagination(Todo.objects, 1, 10)
