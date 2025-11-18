@@ -19,18 +19,24 @@ Due lack of developers we are unable to answer/solve not recommended connection 
 errors. Please switch to recommended method before posting any issue. Thank you.
 ```
 
+## MongoDB Version Compatibility
+
+As of version X.X.X,
+Flask-MongoEngine is tested and compatible with MongoDB versions 5.x, 6.x, 7.x, and 8.x.
+Please ensure your MongoDB server is one of these supported versions for best results.
+
 ## Recommended: List of dictionaries settings
 
-Recommended way for setting up connections is to set ``MONGODB_SETTINGS`` in you
+Recommended way for setting up connections is to set ``MONGODB_SETTINGS`` in your
 application config. ``MONGODB_SETTINGS`` is a list of dictionaries, where each
-dictionary is configuration for individual database (for systems with multi-database)
+dictionary is configuration for an individual database (for systems with multi-database)
 use.
 
 Each dictionary in ``MONGODB_SETTINGS`` will be passed to {func}`mongoengine.connect`,
 which will bypass settings to {func}`mongoengine.register_connection`. All settings
 related to {func}`mongoengine.connect` and {func}`mongoengine.register_connection` will
-be extracted by mentioned functions, any other keyword arguments will be silently
-followed to {class}`pymongo.mongo_client.MongoClient`.
+be extracted by the mentioned functions; any other keyword arguments will be silently
+forwarded to {class}`pymongo.mongo_client.MongoClient`.
 
 This allows complete and flexible database configuration.
 
@@ -132,17 +138,17 @@ URI style connections supported as supply the uri as the ``host`` in the
 ``MONGODB_SETTINGS`` dictionary in ``app.config``.
 
 ```{warning}
-It is not recommended to use URI style settings, as URI style settings parsed and
-manupulated in all parent functions/methods. This may lead to unexpected behaviour when
-parent packages versions changed.
+It is not recommended to use URI style settings, as URI style settings are parsed and
+manipulated in all parent functions/methods. This may lead to unexpected behavior when
+parent package versions change.
 ```
 
 ```{warning}
-Database name from uri has priority over name. (MongoEngine behaviour).
+Database name from URI has priority over name. (MongoEngine behavior).
 ```
 
-If uri presents and doesn't contain database name db setting entirely ignore and db
-name set to ``test``:
+If the URI is present and doesn't contain a database name,
+the db setting is entirely ignored and the db name is set to ``test``:
 
 ```python
 import flask

@@ -8,16 +8,16 @@
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/flask-mongoengine-3)
 
 Flask-MongoEngine is a Flask extension that provides integration with [MongoEngine],
-[WtfForms] and [FlaskDebugToolbar].
+[WTFForms] and [FlaskDebugToolbar].
 
 ## Installation
 
 By default, Flask-MongoEngine will install integration only between [Flask] and
-[MongoEngine]. Integration with [WTFForms] and [FlaskDebugToolbar] are optional and
-should be selected as extra option, if required. This is done by users request, to
-limit amount of external dependencies in different production setup environments.
+[MongoEngine]. Integration with [WTFForms] and [FlaskDebugToolbar] is optional and
+should be selected as an extra option if required. This is done at users' request, to
+limit the number of external dependencies in different production setup environments.
 
-All methods end extras described below are compatible between each other and can be
+All methods and extras described below are compatible with each other and can be
 used together.
 
 ### Installation with MongoEngine only support
@@ -27,8 +27,8 @@ used together.
 pip install flask-mongoengine-3
 ```
 
-We still maintain special case for [Flask] = 1.1.4 support (the latest version in 1.x.x
-branch). To install flask-mongoengine with required dependencies use ``legacy``
+We still maintain a special case for [Flask] = 1.1.4 support (the latest version in the 1.x.x
+branch). To install flask-mongoengine with required dependencies use the ``legacy``
 extra option.
 
 ```bash
@@ -38,7 +38,7 @@ pip install flask-mongoengine-3[legacy]
 
 ### Installation with WTFForms and Flask-WTF support
 
-Flask-mongoengine can be installed with [Flask-WTF] and [WTFForms] support. This
+Flask-MongoEngine can be installed with [Flask-WTF] and [WTFForms] support. This
 will extend project dependencies with [Flask-WTF], [WTFForms] and related packages.
 
 ```bash
