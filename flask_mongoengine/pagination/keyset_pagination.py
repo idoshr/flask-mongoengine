@@ -17,6 +17,9 @@ class KeysetPagination(ABCPagination):
         :param per_page: Required number of documents per page.
         :param max_depth: Option for limit number of dereference documents.
         """
+        if per_page <= 0:
+            raise ValueError("per_page must be a positive integer")
+
         self.get_page(iterable, per_page, field_filter_by, last_field_value)
 
     def get_page(

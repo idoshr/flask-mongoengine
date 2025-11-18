@@ -28,6 +28,9 @@ class ListFieldPagination(Pagination):
         first_page_index is option for change first page index.
 
         """
+        if per_page <= 0:
+            raise ValueError("per_page must be a positive integer")
+
         if page < first_page_index:
             abort(404, "Invalid page number.")
 
